@@ -74,21 +74,21 @@ public function action_resultat_livre_par_editeur()
     }
 
 // livres session admin
-public function action_livre_admin()
+public function action_all_livres_admin()
     {
     $m=Model::get_model();
-    $data=['livre'=>$m->get_livre_admin()];
-    $this->render("livre_admin",$data);
+    $data=['livres'=>$m->get_all_livres_admin()];
+    $this->render("all_livres_admin",$data);
 
     }  
     
 
 // formulaire update livre
-public function action_formulaire_update_livre_admin()
+public function action_formulaire_livre_admin()
     {
     $m=Model::get_model();
-    $data=['livre'=>$m->get_formulaire_update_livre_admin()];
-    $this->render("formulaire_update_livre_admin",$data);
+    $data=['livre'=>$m->get_formulaire_livre_admin()];
+    $this->render("formulaire_livre_admin",$data);
 
     }  
 

@@ -132,7 +132,7 @@ public function get_resultat_livre_par_editeur(){
 
                                     // livre session admin
 
-public function get_livre_admin()
+public function get_all_livres_admin()
 {
     try {
         $requete = $this->bd->prepare('SELECT * FROM livres');
@@ -145,14 +145,15 @@ public function get_livre_admin()
 }
 
 
-public function get_formulaire_update_livre_admin()
+public function get_formulaire_livre_admin()
 {
+        $id = $_POST['Id_Livre'];
     try {
-        $requete = $this->bd->prepare('SELECT * FROM livres WHERE Id_Livre = :id');
-        $requete->execute(array(':id' => $_POST["Id_Livre"]));
+        $requete = $this->bd->prepare('SELECT * FROM livres WHERE Id_Livre=:d');
+        $requete->execute(array(':d'=>$id));
         
     } catch (PDOException $e) {
-        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
     }
     return $requete->fetchAll(PDO::FETCH_OBJ);
 }

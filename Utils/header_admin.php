@@ -4,7 +4,7 @@
       Livres
     </a>
     <ul class="dropdown-menu">
-        <li><a class="dropdown-item text-bg-warning p-3" href="?controller=livres&action=livre_admin">Tous les livres</a></li>  
+        <li><a class="dropdown-item text-bg-warning p-3" href="?controller=livres&action=all_livres_admin">Tous les livres</a></li>  
     </ul>
 
     <a class="nav-link dropdown-toggle" href="?controller=livres&action=all_fournisseurs" role="button" data-bs-toggle="dropdown" aria-expanded="false">

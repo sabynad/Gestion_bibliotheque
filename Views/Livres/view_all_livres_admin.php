@@ -16,7 +16,7 @@
             <th>Action</th>
         </thead>
 
-        <?php  foreach($livre as $l ): ?>
+        <?php  foreach($livres as $l ): ?>
         <tr>
             <td><?=$l->ISBN?></td>
             <td><?=$l->Titre_livre?></td>
@@ -30,10 +30,13 @@
             <td><?=$l->Prix_vente?></td>
             <td><?=$l->Langue_livre?></td>
             <td>
-                <div class="">
-                     <a href="?controller=livres&action=formulaire_update_livre_admin&:id=<?=$l->Id_Livre?>"> 
-                        <button type="Update" class="btn btn-info"> update</button> </a>
-                     <a class="btn btn-danger" href="#"> Deleted </a>
+                <div class="">         
+                     <form action="?controller=livres&action=formulaire_livre_admin" method="POST">
+                        <input type="hidden" value="<?= $l->Id_Livre?>" name="Id_Livre">
+                        <button class="btn btn-success" type="submit">update</button>
+
+                        <button class="btn btn-danger">Delete</button>
+                     </form>                     
                 </div>
             </td>
             
