@@ -112,5 +112,12 @@ public function action_ajout_livre_admin()
     $this->render("livre_ajout_done",$data);
     }  
 
+// suppression livre
+public function action_delete_livre_admin()
+    {
+    $m=Model::get_model();
+    $data=['livres'=>$m->get_delete_livre_admin()];
+    $this->render("livre_delete_done",$data);
+    }  
 
 }

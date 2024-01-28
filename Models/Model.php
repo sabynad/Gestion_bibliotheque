@@ -32,8 +32,10 @@ class Model
 // ----------------------------------PARTIE HOME--------------------------------------------//
 
     
-
+// ********************************************************************************************
 // ----------------------------------PARTIE LIVRE--------------------------------------------//
+// ********************************************************************************************
+
     public function get_all_livres()
     {
         try {
@@ -186,10 +188,10 @@ public function get_update_livre_admin()
                                             // formulaire pour ajouter livre
 public function get_formulaire_ajout_admin()
 {
-        // $id = $_POST['Id_Livre'];
+        
     try {
         $requete = $this->bd->prepare('SELECT * FROM livres WHERE Id_Livre=:d');
-        // $requete->execute(array(':d'=>$id));
+        
         
     } catch (PDOException $e) {
         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
@@ -228,8 +230,10 @@ public function get_ajout_livre_admin()
 
 
 
-
+// ***************************************************************************************************
 // ----------------------------------PARTIE FOURNISSEURS--------------------------------------------//
+// ***************************************************************************************************
+
     public function get_all_fournisseurs(){
 
         try {
@@ -367,8 +371,47 @@ public function get_fournisseur_par_pays(){
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
+                                               // formulaire pour ajouter fournisseur
+public function get_formulaire_ajout_fournisseur()
+{
+        
+    try {
+        $requete = $this->bd->prepare('SELECT * FROM fournisseurs WHERE Id_fournisseur=:idf');
+        
+        
+    } catch (PDOException $e) {
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
+    }
+    return $requete->fetchAll(PDO::FETCH_OBJ);
+}
 
+
+                        // ajout fournisseur
+
+public function get_ajout_fournisseur_admin()
+{
+   
+   try {
+       $requete = $this->bd->prepare("INSERT INTO fournisseurs SET Code_fournisseur= :cf, Raison_sociale= :rs, Rue_fournisseur=:rf,
+       Localite=:lo, Pays=:p, Email_fournisseur=:ef");
+
+    $requete->execute(array(':cf'=>$_POST["Code_fournisseur"],
+    ':rs'=>$_POST["Raison_sociale"],
+    ':rf'=>$_POST["Rue_fournisseur"],
+    ':lo'=>$_POST["Localite"], 
+    ":p"=>$_POST["Pays"],
+    ":ef"=>$_POST["Email_fournisseur"]));   
+        
+   } catch (PDOException $e) {
+       die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+   }
+   return $requete->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+// ****************************************************************************************************
     // ----------------------------------PARTIE COMMANDES--------------------------------------------//
+// ****************************************************************************************************
     public function get_all_commandes(){
 
         try {

@@ -1,3 +1,7 @@
+<form action="?controller=fournisseurs&action=formulaire_ajout_fournisseur" method="POST">
+    <button  class="btn btn-info m-3" type="submit"> <i class="bi bi-plus-square"> Ajout fournisseur</i> </button>
+</form>
+
 <div>
     <p> <?= isset($search)?'Recherche par '.$search:'' ?></p>
     <table class="table table-striped-columns" id='table'>
@@ -24,7 +28,7 @@
                 <td><?=$f->Email_fournisseur?></td>
                 <td>
                     <div class="">        
-                        <button  class="btn btn-info" type="submit"> <i class="bi bi-plus-square"></i> </button> 
+                         
                         <form action="?controller=fournisseurs&action=formulaire_fournisseur_admin" method="POST">
                             <input type="hidden" value="<?= $f->Id_fournisseur?>" name="Id_fournisseur">    
                             <button class="btn btn-secondary" type="submit"><i class="bi bi-pencil-square"></i></button>    

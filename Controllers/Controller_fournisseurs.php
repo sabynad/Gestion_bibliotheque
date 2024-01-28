@@ -96,5 +96,20 @@ public function action_update_fournisseur_admin()
     $this->render("fournisseur_update_done",$data);
     }  
 
+    // formulaire ajout fournisseur
+public function action_formulaire_ajout_fournisseur()
+{
+$m=Model::get_model();
+$data=['fournisseurs'=>$m->get_formulaire_ajout_fournisseur()];
+$this->render("formulaire_ajout_fournisseur",$data);
+}  
+
+// ajout fournisseur
+public function action_ajout_fournisseur_admin()
+    {
+    $m=Model::get_model();
+    $data=['livres'=>$m->get_ajout_fournisseur_admin()];
+    $this->render("fournisseur_ajout_done",$data);
+    }  
 
 }
