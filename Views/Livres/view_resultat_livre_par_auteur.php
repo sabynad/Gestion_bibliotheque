@@ -1,7 +1,7 @@
 
 <div>
     <p><?= isset($search)?'Recherche par '.$search:'' ?></p>
-    <table class="table table-striped-columns" id='table'>
+    <table  class="table table-success table-striped" id='table'>
         <thead>
         <th>Titre livre</th>
         <th>Theme livre</th>

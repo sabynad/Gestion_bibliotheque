@@ -112,4 +112,13 @@ public function action_ajout_fournisseur_admin()
     $this->render("fournisseur_ajout_done",$data);
     }  
 
+    // suppression fournisseur
+public function action_delete_fournisseur_admin()
+{
+$m=Model::get_model();
+$data=['fournisseurs'=>$m->get_delete_fournisseur_admin()];
+$data=['fournisseurs'=>$m->get_all_fournisseurs_admin()];
+$this->render("all_fournisseurs_admin",$data);
+}  
+
 }

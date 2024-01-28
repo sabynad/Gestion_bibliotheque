@@ -33,7 +33,12 @@
                             <input type="hidden" value="<?= $f->Id_fournisseur?>" name="Id_fournisseur">    
                             <button class="btn btn-secondary" type="submit"><i class="bi bi-pencil-square"></i></button>    
                         </form>  
-                        <button class="btn btn-danger"><i class="bi bi-trash"></i></button>                   
+
+                        <form action="?controller=fournisseurs&action=delete_fournisseur_admin" method="POST">
+                            <input type="hidden" value="<?= $f->Id_fournisseur?>" name="Id_fournisseur">    
+                            <button class="btn btn-danger"  onclick="return deleteFournisseur()"><i class="bi bi-trash"></i></button>      
+                        </form>  
+                                         
                     </div>
                  </td>
             </tr>

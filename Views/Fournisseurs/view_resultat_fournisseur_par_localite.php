@@ -1,6 +1,6 @@
 <div>
     <p><?= isset($search)?'Recherche par '.$search:'' ?></p>
-    <table id='table'>
+    <table  class="table table-success table-striped" id='table'>
         <thead>
         <th>Raison Sociale</th>
         <th>Localité</th>

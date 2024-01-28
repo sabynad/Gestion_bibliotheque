@@ -42,9 +42,11 @@
                         <input type="hidden" value="<?= $l->Id_Livre?>" name="Id_Livre">
                         <button class="btn btn-secondary" type="submit"><i class="bi bi-pencil-square"></i></button>                   
                      </form>    
-
-                     <button class="btn btn-danger"><i class="bi bi-trash"></i></button>   
-                                
+                    
+                     <form action="?controller=livres&action=delete_livre_admin" method="POST">
+                        <input type="hidden" value="<?= $l->Id_Livre?>" name="Id_Livre">
+                        <button class="btn btn-danger"  onclick="return deleteLivre()"><i class="bi bi-trash"></i></button>   
+                     </form>          
                 </div>
             </td>
             

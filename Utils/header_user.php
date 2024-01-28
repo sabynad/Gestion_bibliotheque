@@ -33,8 +33,8 @@
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="?controller=commandes&action=all_commandes">Toutes les commandes</a></li>
                 <li><a class="dropdown-item" href="?controller=commandes&action=commande_par_editeur">Par éditeur</a></li>
-                <li><a class="dropdown-item" href="#">Par fournisseur</a></li>
-                <li><a class="dropdown-item" href="#">Par date</a></li>
+                <li><a class="dropdown-item" href="?controller=commandes&action=commande_par_fournisseur">Par fournisseur</a></li>
+                <li><a class="dropdown-item" href="?controller=commandes&action=commande_par_date">Par date</a></li>
             </ul>  
         </li>
     </ul>

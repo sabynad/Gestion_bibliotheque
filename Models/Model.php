@@ -29,8 +29,6 @@ class Model
         return self::$instance;
     }
 
-// ----------------------------------PARTIE HOME--------------------------------------------//
-
     
 // ********************************************************************************************
 // ----------------------------------PARTIE LIVRE--------------------------------------------//
@@ -163,7 +161,7 @@ public function get_formulaire_update_admin()
 
 
 
-                                    // update livre
+                                    // modifie livre
 public function get_update_livre_admin()
 {
    
@@ -226,6 +224,34 @@ public function get_ajout_livre_admin()
        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
    }
    return $requete->fetchAll(PDO::FETCH_OBJ);
+}
+
+// formulaire suppression livre
+// public function get_formulaire_delete_admin()
+// {
+    
+//     try {
+//         $requete = $this->bd->prepare('SELECT * FROM livres WHERE Id_Livre=:d');
+                
+//     } catch (PDOException $e) {
+//         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
+//     }
+//     return $requete->fetchAll(PDO::FETCH_OBJ);
+// }
+
+
+// suppression livre
+public function get_delete_livre_admin()
+{
+        $id = $_POST['Id_Livre'];
+    try {
+        $requete = $this->bd->prepare('DELETE FROM livres WHERE Id_Livre=:d');
+        $requete->execute(array(':d'=>$id));
+        
+    } catch (PDOException $e) {
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
+    }
+    return $requete->fetchAll(PDO::FETCH_OBJ);
 }
 
 
@@ -371,14 +397,13 @@ public function get_fournisseur_par_pays(){
         return $requete->fetchAll(PDO::FETCH_OBJ);
     }
 
-                                               // formulaire pour ajouter fournisseur
+            // formulaire pour ajouter fournisseur
 public function get_formulaire_ajout_fournisseur()
 {
         
     try {
         $requete = $this->bd->prepare('SELECT * FROM fournisseurs WHERE Id_fournisseur=:idf');
-        
-        
+            
     } catch (PDOException $e) {
         die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
     }
@@ -408,6 +433,20 @@ public function get_ajout_fournisseur_admin()
    return $requete->fetchAll(PDO::FETCH_OBJ);
 }
 
+// suppression fournisseur
+public function get_delete_fournisseur_admin()
+{
+        $id = $_POST['Id_fournisseur'];
+    try {
+        $requete = $this->bd->prepare('DELETE FROM fournisseurs WHERE Id_fournisseur=:idf');
+        $requete->execute(array(':idf'=>$id));
+        
+    } catch (PDOException $e) {
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
+    }
+    return $requete->fetchAll(PDO::FETCH_OBJ);
+}
+
 
 // ****************************************************************************************************
     // ----------------------------------PARTIE COMMANDES--------------------------------------------//
@@ -425,6 +464,7 @@ public function get_ajout_fournisseur_admin()
     }
 
 // Liste commande par editeur
+//----------------------------
     public function get_commande_par_editeur(){
         try {
             $requete = $this->bd->prepare('SELECT Editeur FROM livres JOIN commander ON livres.Id_Livre = commander.Id_Livre;');
@@ -434,16 +474,21 @@ public function get_ajout_fournisseur_admin()
             die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
         }
         return $requete->fetchAll(PDO::FETCH_OBJ);
-
     }
 
  // resultat commande par editeur
+ //-------------------------------
  public function get_resultat_commande_par_editeur()
  {
     $choixEditeur = $_POST["select-titre"];
     echo $choixEditeur;
     try {
-        $requete = $this->bd->prepare('SELECT l.Editeur, c.Date_achat, c.Prix_achat FROM livres AS l JOIN commander c ON c.Id_Livre = l.Id_Livre WHERE l.Editeur = :e;');
+        $requete = $this->bd->prepare('SELECT l.Editeur, c.Date_achat, c.Prix_achat 
+        FROM livres
+        AS l 
+        JOIN commander c 
+        ON c.Id_Livre = l.Id_Livre 
+        WHERE l.Editeur = :e;');
         $requete->execute(array(':e'=>$choixEditeur));
         
     } catch (PDOException $e) {
@@ -452,8 +497,83 @@ public function get_ajout_fournisseur_admin()
     return $requete->fetchAll(PDO::FETCH_OBJ);
 }
 
+// Liste commande par fournisseur
+public function get_commande_par_fournisseur(){
+    try {
+        $requete = $this->bd->prepare('SELECT Raison_sociale 
+        FROM fournisseurs 
+        JOIN commander 
+        ON fournisseurs.Id_fournisseur = commander.Id_fournisseur;');
+        $requete->execute();
+        
+    } catch (PDOException $e) {
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+    }
+    return $requete->fetchAll(PDO::FETCH_OBJ);
+}
 
-    // commandes session admin
+// resultat commande par fournisseur
+//---------------------------------
+public function get_resultat_commande_par_fournisseur()
+{
+   $choixFournisseur = $_POST["select-titre"];
+   echo $choixFournisseur;
+   try {
+       $requete = $this->bd->prepare('SELECT f.Raison_sociale, c.Date_achat, c.Prix_achat
+        FROM fournisseurs
+         AS f 
+         JOIN commander c 
+         ON c.Id_fournisseur = f.Id_fournisseur
+         WHERE f.Raison_sociale = :e;');
+       $requete->execute(array(':e'=>$choixFournisseur));
+       
+   } catch (PDOException $e) {
+       die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+   }
+   return $requete->fetchAll(PDO::FETCH_OBJ);
+}
+
+// Liste commande par date
+// ---------------------------------
+public function get_commande_par_date(){
+    try {
+        $requete = $this->bd->prepare('SELECT Date_achat, f.Raison_sociale 
+        FROM fournisseurs 
+        AS f
+        JOIN commander 
+        ON f.Id_fournisseur = commander.Id_fournisseur;');
+        $requete->execute();
+        
+    } catch (PDOException $e) {
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+    }
+    return $requete->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+// resultat commande par date
+//----------------------------
+public function get_resultat_commande_par_date()
+{
+   $choixDate = $_POST["select-titre"];
+   
+   try {
+       $requete = $this->bd->prepare('SELECT f.Raison_sociale, c.Date_achat, c.Prix_achat
+        FROM fournisseurs AS f 
+        JOIN commander AS c 
+         ON c.Id_fournisseur = f.Id_fournisseur
+         WHERE c.Date_achat = :e;');
+       $requete->execute(array(':e'=>$choixDate));
+       
+   } catch (PDOException $e) {
+       die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() . '</p>');
+   }
+   return $requete->fetchAll(PDO::FETCH_OBJ);
+}
+
+
+// commandes session admin
+//-------------------------
 
     public function get_all_commandes_admin(){
 
@@ -511,6 +631,19 @@ public function get_user_connecter()
 
 }
 
+
+// formulaire pour ajouter commande
+public function get_formulaire_ajout_commande()
+{
+        
+    try {
+        $requete = $this->bd->prepare('SELECT * FROM commander WHERE id_commande=:cde');
+            
+    } catch (PDOException $e) {
+        die('Erreur [' . $e->getCode() . '] : ' . $e->getMessage() .'</p>');
+    }
+    return $requete->fetchAll(PDO::FETCH_OBJ);
+}
 
 
 
