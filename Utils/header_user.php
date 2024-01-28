@@ -1,11 +1,11 @@
-<div class="collapse navbar-collapse" id="navbarNavDropdown">
+<div class="collapse navbar-collapse fs-4" id="">
 
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="?controller=livres&action=all_livres" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Livres
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu ">
                 <li><a class="dropdown-item" href="?controller=livres&action=all_livres">Tous les livres</a></li>
                 <li><a class="dropdown-item" href="?controller=livres&action=livre_par_titre">Par titre</a></li>
                 <li><a class="dropdown-item" href="?controller=livres&action=livre_par_auteur">Par auteur</a></li>
@@ -26,7 +26,7 @@
         </li>
 
 
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="?controller=commandes&action=all_commandes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Commandes
             </a>
@@ -38,13 +38,14 @@
             </ul>  
         </li>
     </ul>
-
-    <?php
-        echo "Bonjour, <br>". $_SESSION['nom']." ".$_SESSION['prenom']. " <br>".$_SESSION['Statut'];  
-
-    ?>
-   <a class="btn btn-warning" href="?controller=home&action=user_deconnexion"> Deconnexion </a>
+   
 </div>
+<div class="mx-5">
+        <?php
+            echo "Bonjour, <br>". $_SESSION['nom']." ".$_SESSION['prenom']. " <br>".$_SESSION['Statut'];  
+        ?>
+</div>
+    <a class="btn btn-warning" href="?controller=home&action=user_deconnexion"> Deconnexion </a>
 
 
 

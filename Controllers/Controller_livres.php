@@ -70,30 +70,47 @@ public function action_resultat_livre_par_editeur()
     $m=Model::get_model();
     $data=['livre'=>$m->get_resultat_livre_par_editeur()];
     $this->render("resultat_livre_par_editeur",$data);
-
     }
 
-// livres session admin
+// tous les livres session admin
 public function action_all_livres_admin()
     {
     $m=Model::get_model();
     $data=['livres'=>$m->get_all_livres_admin()];
     $this->render("all_livres_admin",$data);
-
     }  
     
-
 // formulaire update livre
-public function action_formulaire_livre_admin()
+public function action_formulaire_update_admin()
     {
     $m=Model::get_model();
-    $data=['livre'=>$m->get_formulaire_livre_admin()];
-    $this->render("formulaire_livre_admin",$data);
-
+    $data=['livre'=>$m->get_formulaire_update_admin()];
+    $this->render("formulaire_update_admin",$data);
     }  
 
+// update livre
+public function action_update_livre_admin()
+    {
+    $m=Model::get_model();
+    $data=['livres'=>$m->get_update_livre_admin()];
+    $this->render("livre_update_done",$data);
+    }  
 
+// formulaire ajout livre
+public function action_formulaire_ajout_admin()
+    {
+    $m=Model::get_model();
+    $data=['livres'=>$m->get_formulaire_ajout_admin()];
+    $this->render("formulaire_ajout_admin",$data);
+    }  
 
+// ajout livre
+public function action_ajout_livre_admin()
+    {
+    $m=Model::get_model();
+    $data=['livres'=>$m->get_ajout_livre_admin()];
+    $this->render("livre_ajout_done",$data);
+    }  
 
 
 }

@@ -30,45 +30,71 @@ class Controller_fournisseurs extends Controller
     }
 
  //resultat recherche nom fournisseur
- public function action_resultat_fournisseur_par_raison_sociale()
- {
-    $m=Model::get_model();
-    $data=['fournisseurs'=>$m->get_resultat_fournisseur_par_raison_sociale()];
-    $this->render("resultat_fournisseur_par_raison_sociale",$data);
-}
+    public function action_resultat_fournisseur_par_raison_sociale()
+    {
+        $m=Model::get_model();
+        $data=['fournisseurs'=>$m->get_resultat_fournisseur_par_raison_sociale()];
+        $this->render("resultat_fournisseur_par_raison_sociale",$data);
+    }
 
 // liste des fournisseurs par localité
 public function action_fournisseur_par_localite()
-{
-    echo "action localite";
-    $m=Model::get_model();
-    $data=['fournisseurs'=>$m->get_fournisseur_par_localite()];
-    $this->render("fournisseur_par_localite",$data);
-}
+    {
+        echo "action localite";
+        $m=Model::get_model();
+        $data=['fournisseurs'=>$m->get_fournisseur_par_localite()];
+        $this->render("fournisseur_par_localite",$data);
+    }
 
  //resultat recherche des fournisseurs par localite
  public function action_resultat_fournisseur_par_localite()
- {
-    $m=Model::get_model();
-    $data=['fournisseurs'=>$m->get_resultat_fournisseur_par_localite()];
-    $this->render("resultat_fournisseur_par_localite",$data);
-}
+    {
+        $m=Model::get_model();
+        $data=['fournisseurs'=>$m->get_resultat_fournisseur_par_localite()];
+        $this->render("resultat_fournisseur_par_localite",$data);
+    }
    
 // liste des fournisseurs par Pays
 public function action_fournisseur_par_pays()
-{
-    $m=Model::get_model();
-    $data=['fournisseurs'=>$m->get_fournisseur_par_pays()];
-    $this->render("fournisseur_par_pays",$data);
-}
+    {
+        $m=Model::get_model();
+        $data=['fournisseurs'=>$m->get_fournisseur_par_pays()];
+        $this->render("fournisseur_par_pays",$data);
+    }
 
 //resultat recherche des fournisseurs par pays
 public function action_resultat_fournisseur_par_pays()
-{
-   $m=Model::get_model();
-   $data=['fournisseurs'=>$m->get_resultat_fournisseur_par_pays()];
-   $this->render("resultat_fournisseur_par_pays",$data);
-}
+    {
+    $m=Model::get_model();
+    $data=['fournisseurs'=>$m->get_resultat_fournisseur_par_pays()];
+    $this->render("resultat_fournisseur_par_pays",$data);
+    }
+
+
+// tous les fournisseurs session admin
+public function action_all_fournisseurs_admin()
+    {
+    $m=Model::get_model();
+    $data=['fournisseurs'=>$m->get_all_fournisseurs_admin()];
+    $this->render("all_fournisseurs_admin",$data);
+
+    }  
+
+    // formulaire update fournisseur
+public function action_formulaire_fournisseur_admin()
+    {
+    $m=Model::get_model();
+    $data=['fournisseurs'=>$m->get_formulaire_fournisseur_admin()];
+    $this->render("formulaire_fournisseur_admin",$data);
+    } 
+    
+    // update fournisseur
+public function action_update_fournisseur_admin()
+    {
+    $m=Model::get_model();
+    $data=['fournisseurs'=>$m->get_update_fournisseur_admin()];
+    $this->render("fournisseur_update_done",$data);
+    }  
 
 
 }

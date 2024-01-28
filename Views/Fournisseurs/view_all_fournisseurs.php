@@ -8,7 +8,7 @@
         <th>Localité</th>
         <th>Pays</th>
         <th>Email fournisseur</th>
-        <th>Action</th>
+        
         </thead>
 
         <?php  foreach($fournisseurs as $f ): ?>

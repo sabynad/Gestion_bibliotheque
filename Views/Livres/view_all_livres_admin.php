@@ -1,20 +1,26 @@
+<form action="?controller=livres&action=formulaire_ajout_admin" method="POST">  
+     <button  class="btn btn-info m-3" type="submit"> <i class="bi bi-plus-square"></i> Ajout livre</button> 
+</form> 
+
 <div>
     <p> <?= isset($search)?'Recherche par '.$search:'' ?></p>
-    <table class="table table-striped-columns" id='table'>
-        <thead>
-            <th>ISBN</th>
-            <th>Titre</th>
-            <th>Theme</th>
-            <th>Nombre de pages</th>
-            <th>Format</th>
-            <th>Nom de l'auteur</th>
-            <th>Prénom</th>
-            <th>Éditeur</th>
-            <th>Année d'édition</th>
-            <th>Prix</th>
-            <th>Langue</th>
-            <th>Action</th>
-        </thead>
+    <table class="table table-striped-columns "  id='table'>
+        <div class="">
+            <thead>
+                <th>ISBN</th>
+                <th>Titre</th>
+                <th>Theme</th>
+                <th>Nombre de pages</th>
+                <th>Format</th>
+                <th>Nom de l'auteur</th>
+                <th>Prénom</th>
+                <th>Éditeur</th>
+                <th>Année d'édition</th>
+                <th>Prix</th>
+                <th>Langue</th>        
+                <th>Action</th>           
+            </thead>
+        </div>
 
         <?php  foreach($livres as $l ): ?>
         <tr>
@@ -30,13 +36,15 @@
             <td><?=$l->Prix_vente?></td>
             <td><?=$l->Langue_livre?></td>
             <td>
-                <div class="">         
-                     <form action="?controller=livres&action=formulaire_livre_admin" method="POST">
-                        <input type="hidden" value="<?= $l->Id_Livre?>" name="Id_Livre">
-                        <button class="btn btn-success" type="submit">update</button>
+                <div class="">  
 
-                        <button class="btn btn-danger">Delete</button>
-                     </form>                     
+                     <form action="?controller=livres&action=formulaire_update_admin" method="POST">
+                        <input type="hidden" value="<?= $l->Id_Livre?>" name="Id_Livre">
+                        <button class="btn btn-secondary" type="submit"><i class="bi bi-pencil-square"></i></button>                   
+                     </form>    
+
+                     <button class="btn btn-danger"><i class="bi bi-trash"></i></button>   
+                                
                 </div>
             </td>
             

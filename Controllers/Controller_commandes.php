@@ -38,5 +38,26 @@ public function action_commande_par_editeur()
     $this->render("resultat_commande_par_editeur",$data);
 }
 
+
+// toutes les commandes session admin
+public function action_all_commandes_admin()
+    {
+    $m=Model::get_model();
+    $data=['commandes'=>$m->get_all_commandes_admin()];
+    $this->render("all_commandes_admin",$data);
+
+    }  
     
+
+// formulaire update commande
+public function action_formulaire_commande_admin()
+    {
+    $m=Model::get_model();
+    $data=['commandes'=>$m->get_formulaire_commande_admin()];
+    $this->render("formulaire_commande_admin",$data);
+
+    }  
+
+
+
 }

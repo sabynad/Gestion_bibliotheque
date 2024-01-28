@@ -3,7 +3,7 @@
 ?>
 
 
-<form  class="" action="?controller=livres&action=livre_admin" method="POST">
+<form  class="" action="?controller=livres&action=update_livre_admin" method="POST">
 
   <div class="mb-3">
     <label for="ISBN" class="form-label">ISBN</label>
@@ -47,7 +47,7 @@
 
   <div class="mb-3">
     <label for="checkbox" class="form-label">Année édition</label>
-    <input type="text" class="form-control" id="ae" name="Année_edition" value=" <?=$livre[0]->Annee_edition?>">
+    <input type="text" class="form-control" id="ae" name="Annee_edition" value=" <?=$livre[0]->Annee_edition?>">
   </div>
 
   <div class="mb-3">
@@ -60,6 +60,13 @@
     <input type="text" class="form-control" id="lv" name="Langue_livre" value=" <?=$livre[0]->Langue_livre?>">
   </div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="mb-3">
+    <input type="hidden" class="form-control" id="Id_Livre" name="Id_Livre" value=" <?=$livre[0]->Id_Livre?>">
+  </div>
+
+
+<div class="mb-5">
+  <button type="submit" class="nb-5 btn btn-primary">Submit</button>
+</div>
 
 </form>

@@ -1,4 +1,23 @@
-footer{
+/* *{
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid orange;
+}
+
+.nav-link {
+
+    margin-left: 15px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+} */
+
+footer
+{
     text-align: center;
 }
 

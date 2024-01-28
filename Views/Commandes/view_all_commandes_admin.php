@@ -1,14 +1,17 @@
 <div>
     <p> <?= isset($search)?'Recherche par '.$search:'' ?></p>
     <table class="table table-striped-columns" id='table'>
-        <thead>
-        <th>Titre livre</th>
-        <th>Fournisseur</th>
-        <th>Editeur</th>
-        <th>Date d'achat</th>
-        <th>Prix d'achat</th>
-        <th>Quantité</th>
-        </thead>
+        <div class="p-3">
+            <thead>
+            <th>Titre livre</th>
+            <th>Fournisseur</th>
+            <th>Editeur</th>
+            <th>Date d'achat</th>
+            <th>Prix d'achat</th>
+            <th>Quantité</th>
+            <th>Action</th>
+            </thead>
+        </div>
 
         <?php  foreach($commandes as $c ): ?>
 
